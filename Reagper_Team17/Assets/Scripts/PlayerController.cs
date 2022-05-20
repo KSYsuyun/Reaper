@@ -60,12 +60,12 @@ public class PlayerController : MonoBehaviour
                 isJumping = false;
                 Debug.Log(rayHit.collider.name);
 
-                if (rayHit.collider.tag == "1F")
+                if (rayHit.collider.CompareTag("1F_Floor"))
                 {
                     playerPos_Floor = 1;
                     Debug.Log("⑷營 類 : " + playerPos_Floor);
                 }
-                else if (rayHit.collider.tag == "2F")
+                else if (rayHit.collider.CompareTag("2F_Floor"))
                 {
                     playerPos_Floor = 2;
                     Debug.Log("⑷營 類 : " + playerPos_Floor);
