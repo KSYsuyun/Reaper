@@ -11,11 +11,14 @@ public class PlayerController : MonoBehaviour
     SpriteRenderer sr;
 
     public float movementSpeed = 3.0f;
-    public float jumpPower = 10f;
+    public float jumpPower = 30f;
     public GameObject condiBar; //캐릭터의 체력바를 위한 선언
     public bool condiZero = false; //컨디션BAr.. 너무 달려서 체력이 0이 됨.
     bool isJumping = false; //캐릭터가 점프를 하고있는지 아닌지..
     public int playerPos_Floor = 1;//캐릭터의 위치_층별_ 1층 _2층
+
+    public bool isLadder = false; //사다리를 타고 있는지 아닌지 여부
+    public bool wantDown; //아래로 내려가고싶은지 여부
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -25,11 +28,22 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        
-        if (Input.GetButtonDown("Jump"))
+
+        if (isLadder && Input.GetKey(KeyCode.X))
         {
-            //만약 스페이스 바를 눌렀고, 점프가 안되있을 경우!.. 점프!
-            Jump();
+            //만약 사다리를 타고 있다면...?
+            float v = Input.GetAxisRaw("Vertical");
+            rigid.gravityScale = 0; //사다리를 타고있을땐, 중력 없게
+            rigid.velocity = new Vector2(rigid.velocity.x, v * movementSpeed);
+        }
+        else
+        {
+            if (Input.GetButtonDown("Jump"))
+            {
+                //만약 스페이스 바를 눌렀고, 점프가 안되있을 경우!.. 점프!
+                Jump(); //사다리를 타고있지 않을 땐, 중력 있게
+            }
+            rigid.gravityScale = 3;
         }
     }
     private void FixedUpdate()
@@ -40,17 +54,21 @@ public class PlayerController : MonoBehaviour
         if (rigid.velocity.y < 0) //캐릭터가 점프해서 velocity.y가 높아졌을 때만
         {
             Debug.DrawRay(rigid.position, Vector3.down, new Color(0, 1, 0)); //에디터 상에서만 레이를 그려준다
-            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 1, mask);
+            RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, Vector3.down, 3, mask);
             if (rayHit.collider != null) // 바닥 감지를 위해서 레이저를 쏜다! 
             {
                 isJumping = false;
+                Debug.Log(rayHit.collider.name);
+
                 if (rayHit.collider.tag == "1F")
                 {
                     playerPos_Floor = 1;
+                    Debug.Log("현재 층 : " + playerPos_Floor);
                 }
-                else if (rayHit.collider.tag == "1F")
+                else if (rayHit.collider.tag == "2F")
                 {
                     playerPos_Floor = 2;
+                    Debug.Log("현재 층 : " + playerPos_Floor);
                 }
 
             }
@@ -119,5 +137,20 @@ public class PlayerController : MonoBehaviour
         rigid.AddForce(jumpVelocity, ForceMode2D.Impulse);
 
         isJumping = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("Ladder"))
+        {
+            isLadder = true;
+        }
+    }
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            isLadder = false;
+        }
     }
 }
