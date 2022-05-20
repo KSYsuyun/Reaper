@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     //PlayerController
     //5월 20일: EunBin 캐릭터 이동 구현
 
+    public GameObject condiBar; //캐릭터의 체력바를 위한 선언
+
     Rigidbody2D rigid;
     SpriteRenderer sr;
 
@@ -44,14 +46,18 @@ public class PlayerController : MonoBehaviour
             sr.flipX = false;
         }
 
-        if(Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Z))
         {
-            movementSpeed =7;
+            movementSpeed = 7;
+            condiBar.GetComponent<ConditionBar>().currentHP -= 1f;
         }
         else
         {
             movementSpeed = 3;
+
+            condiBar.GetComponent<ConditionBar>().currentHP += 1f;
         }
+        
 
         transform.position += moveVelocity * movementSpeed * Time.deltaTime;
     }
