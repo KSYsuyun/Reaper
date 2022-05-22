@@ -7,6 +7,10 @@ TagManager:
   - Ladder
   - 1F_Floor
   - 2F_Floor
+  - room1
+  - room2
+  - room3
+  - room4
   layers:
   - Default
   - TransparentFX
