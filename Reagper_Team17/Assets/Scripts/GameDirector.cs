@@ -16,6 +16,6 @@ public class GameDirector : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerPosText.text = playercontroller.playerPos_Floor.ToString() + "Ãþ" + " °Å½Ç";
+        playerPosText.text = playercontroller.playerPos_Floor.ToString() + "Ãþ" +" Room"+ playercontroller.playerPos_Room.ToString();
     }
 }

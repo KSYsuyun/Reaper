@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 228219749}
   - component: {fileID: 228219748}
   m_Layer: 6
-  m_Name: room01 (4)
+  m_Name: room4
   m_TagString: room4
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -187,7 +187,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 641132424}
   - component: {fileID: 641132423}
   m_Layer: 6
-  m_Name: room01
+  m_Name: room1
   m_TagString: room1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -675,7 +675,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1061,7 +1061,7 @@ GameObject:
   - component: {fileID: 1000300348}
   - component: {fileID: 1000300347}
   m_Layer: 6
-  m_Name: room01 (1)
+  m_Name: room2
   m_TagString: room2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1112,7 +1112,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1301,7 +1301,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1237640434}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.64, y: 2.54, z: 0}
+  m_LocalPosition: {x: -5.5, y: 2.54, z: 0}
   m_LocalScale: {x: 1.9995191, y: 12.262356, z: 1}
   m_Children:
   - {fileID: 1857979082}
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 1275015284}
   - component: {fileID: 1275015283}
   m_Layer: 6
-  m_Name: room01 (2)
+  m_Name: room3
   m_TagString: room3
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1372,7 +1372,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -1583,7 +1583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1349949212}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.01, z: 0}
+  m_LocalPosition: {x: -56.14, y: -2.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 519420032}
@@ -1607,6 +1607,7 @@ MonoBehaviour:
   condiBar: {fileID: 1113058737}
   condiZero: 0
   playerPos_Floor: 1
+  playerPos_Room: 0
   isLadder: 0
   wantDown: 0
 --- !u!70 &1349949219

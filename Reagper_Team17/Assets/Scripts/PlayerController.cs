@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     public bool condiZero = false; //컨디션BAr.. 너무 달려서 체력이 0이 됨.
     bool isJumping = false; //캐릭터가 점프를 하고있는지 아닌지..
     public int playerPos_Floor = 1;//캐릭터의 위치_층별_ 1층 _2층
+    
+    public int playerPos_Room = 0;//캐릭터의 위치_층별_ 1층 _2층
+
 
     public bool isLadder = false; //사다리를 타고 있는지 아닌지 여부
     public bool wantDown; //아래로 내려가고싶은지 여부
@@ -145,6 +148,17 @@ public class PlayerController : MonoBehaviour
         {
             isLadder = true;
         }
+        for(int i=1;i<5;i++)
+        {
+            if (collision.CompareTag("room"+i.ToString()))
+            {
+                playerPos_Room = i;
+            }
+        }
+/*        if (collision.CompareTag("room1"))
+        {
+            playerPos_Room = 1;
+        }*/
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
